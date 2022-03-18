@@ -29,6 +29,7 @@
 .button-row td.clear {
   width: 75%;
   background-color: rgb(78 79 75);
+  font-size: 1.5rem;
 }
 
 .button-row td.zero {
