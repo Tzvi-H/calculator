@@ -2,34 +2,36 @@
   color: rgb(224, 224, 227);
   width: 300px;
   margin: 0 auto;
-  background-color: rgb(44, 43, 41);
   font-family: Helvetica;
-  border-radius: 4px;
 }
 
-.display {
+.display-row td {
+  background-color: rgb(44, 43, 41);
   padding: 35px 20px 12px;
   text-align: right;
   font-size: 2rem;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
 .button-row {
   display: flex;
 }
 
-.button-row div {
+.button-row td {
   width: 25%;
   text-align: center;
   padding: 25px;
   border: thin solid #292b2a;
+  border-collapse: collapse;
 }
 
-.button-row div.clear {
+.button-row td.clear {
   width: 75%;
   background-color: rgb(78 79 75);
 }
 
-.button-row div.zero {
+.button-row td.zero {
   width: 50%;
 }
 
@@ -39,4 +41,12 @@
 
 .operator {
   background-color: #f29e38;;
+}
+
+.bottom-right {
+  border-bottom-right-radius: 8px;
+}
+
+.bottom-left {
+  border-bottom-left-radius: 8px;
 }
