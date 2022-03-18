@@ -1,9 +1,10 @@
 .calculator {
   color: rgb(224, 224, 227);
-  width: 400px;
+  width: 300px;
   margin: 0 auto;
   background-color: rgb(44, 43, 41);
   font-family: Helvetica;
+  border-radius: 4px;
 }
 
 .display {
@@ -12,6 +13,30 @@
   font-size: 2rem;
 }
 
-.buttons {
-  height: 80%;
+.button-row {
+  display: flex;
+}
+
+.button-row div {
+  width: 25%;
+  text-align: center;
+  padding: 25px;
+  border: thin solid #292b2a;
+}
+
+.button-row div.clear {
+  width: 75%;
+  background-color: rgb(78 79 75);
+}
+
+.button-row div.zero {
+  width: 50%;
+}
+
+.number {
+  background-color: rgb(108 109 105); 
+}
+
+.operator {
+  background-color: #f29e38;;
 }
