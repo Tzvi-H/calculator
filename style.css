@@ -41,7 +41,7 @@
 }
 
 .operator {
-  background-color: #f29e38;;
+  background-color: rgb(242 158 56);
 }
 
 .bottom-right {
@@ -50,4 +50,16 @@
 
 .bottom-left {
   border-bottom-left-radius: 8px;
+}
+
+.button-row td.clear:active {
+  background-color: rgb(108 109 105); 
+}
+
+.number:active {
+  background-color: #bbbab4;
+}
+
+.operator:active {
+  background-color: #8b5a1d;;
 }
