@@ -5,13 +5,13 @@ body {
   align-items: center;
 }
 
-.calculator {
+table.calculator {
   color: rgb(224, 224, 227);
   width: 300px;
   font-family: Helvetica;
 }
 
-.display-row td {
+td#display {
   background-color: rgb(44, 43, 41);
   padding: 35px 20px 12px;
   text-align: right;
@@ -20,11 +20,11 @@ body {
   border-top-left-radius: 8px;
 }
 
-.button-row {
+tr.button-row {
   display: flex;
 }
 
-.button-row td {
+tr.button-row td {
   width: 25%;
   text-align: center;
   padding: 25px;
@@ -32,40 +32,40 @@ body {
   border-collapse: collapse;
 }
 
-.button-row td.clear {
+tr.button-row td.clear {
   width: 75%;
   background-color: rgb(78 79 75);
   font-size: 1.5rem;
 }
 
-.button-row td.zero {
+tr.button-row td.zero {
   width: 50%;
 }
 
-.number {
+td.number {
   background-color: rgb(108 109 105); 
 }
 
-.operator {
+td.operator {
   background-color: rgb(242 158 56);
 }
 
-.bottom-right {
+td.bottom-right {
   border-bottom-right-radius: 8px;
 }
 
-.bottom-left {
+td.bottom-left {
   border-bottom-left-radius: 8px;
 }
 
-.button-row td.clear:active {
+tr.button-row td.clear:active {
   background-color: rgb(108 109 105); 
 }
 
-.number:active {
+td.number:active {
   background-color: #bbbab4;
 }
 
-.operator:active {
+td.operator:active {
   background-color: #8b5a1d;;
 }
