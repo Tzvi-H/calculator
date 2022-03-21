@@ -2,6 +2,7 @@ const calculatorState = {
   operand1: null,
   operand2: null,
   operator: null,
+  operand1Set: false,
 }
 
 const calulator = {
@@ -25,7 +26,7 @@ function operate(operator, a, b) {
 
 function addNumberToDisplay(number) {
   const display = document.querySelector('#display');
-  if (display.textContent === '0') {
+  if (display.textContent === '0' || calculatorState.operand1Set) {
     display.textContent = number;
   } else {
     display.textContent += number;
@@ -33,6 +34,8 @@ function addNumberToDisplay(number) {
 }
 
 function operatorClicked(operator) {
+  calculatorState.operand1Set = true;
+
   const display = document.querySelector('#display');
   calculatorState.operand1 = parseFloat(display.textContent);
 
@@ -63,6 +66,7 @@ function setDisplay(value) {
 
 function resetDisplay() {
   setDisplay(0);
+  calculatorState.operand1Set = false;
 }
 
 function handleCalculatorClick(e) {
