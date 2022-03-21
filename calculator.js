@@ -1,3 +1,9 @@
+const calculatorState = {
+  operand1: null,
+  operand2: null,
+  operator: null,
+}
+
 const calulator = {
   add(a, b) {
     return a + b;
@@ -26,29 +32,54 @@ function addNumberToDisplay(number) {
   }
 }
 
-function displayCalculation(operation) {
-  console.log(`need to operate ${operation}`)
+function operatorClicked(operator) {
+  const display = document.querySelector('#display');
+  calculatorState.operand1 = parseFloat(display.textContent);
+
+  switch (operator) {
+    case '+':
+      calculatorState.operator = 'add';
+      break;
+    case '−':
+      calculatorState.operator = 'subtract';
+      break;
+    case '×':
+      calculatorState.operator = 'multiply'
+      break;
+    case '÷':
+      calculatorState.operator = 'divide'
+      break ;
+  }
 }
 
-function clearDisplay() {
+function displayOperation() {
+  console.log(`need to operate`)
+}
+
+function setDisplay(value) {
   const display = document.querySelector('#display');
-  display.textContent = 0;
+  display.textContent = value;
+}
+
+function resetDisplay() {
+  setDisplay(0);
 }
 
 function handleCalculatorClick(e) {
   e.stopPropagation();
   switch (true) {
+    case e.target.classList.contains('equals'):
+      displayOperation();
+      break;
     case e.target.classList.contains('number'):
       addNumberToDisplay(e.target.textContent);
       break;
     case e.target.classList.contains('operator'):
-      displayCalculation(e.target.textContent);
+      operatorClicked(e.target.textContent);
       break;
     case e.target.classList.contains('clear'):
-      clearDisplay()
+      resetDisplay()
       break;
-    default:
-      console.log('clicked on something else');
   }
 }
 
