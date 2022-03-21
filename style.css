@@ -1,7 +1,13 @@
+body {  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .calculator {
   color: rgb(224, 224, 227);
   width: 300px;
-  margin: 0 auto;
   font-family: Helvetica;
 }
 
