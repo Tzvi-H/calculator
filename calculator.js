@@ -1,6 +1,5 @@
 const calculatorState = {
   operand1: null,
-  operand2: null,
   operator: null,
   operand1Set: false,
 }
@@ -56,7 +55,12 @@ function operatorClicked(operator) {
 }
 
 function displayOperation() {
-  console.log(`need to operate`)
+  const operater = calculatorState['operator'];
+  const op1 = calculatorState['operand1'];
+  const op2 = parseFloat(document.querySelector('#display').textContent);;
+  const result = operate(operater, op1, op2);
+  setDisplay(result);
+  calculatorState.operand1Set = false;
 }
 
 function setDisplay(value) {
