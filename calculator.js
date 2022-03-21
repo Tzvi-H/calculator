@@ -18,7 +18,12 @@ function operate(operator, a, b) {
 }
 
 function addNumberToDisplay(number) {
-  console.log(number);
+  const display = document.querySelector('#display');
+  if (display.textContent === '0') {
+    display.textContent = number;
+  } else {
+    display.textContent += number;
+  }
 }
 
 function displayCalculation(operation) {
@@ -26,7 +31,8 @@ function displayCalculation(operation) {
 }
 
 function clearDisplay() {
-  console.log('need to clear display');
+  const display = document.querySelector('#display');
+  display.textContent = 0;
 }
 
 function handleCalculatorClick(e) {
