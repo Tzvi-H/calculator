@@ -24,7 +24,7 @@ function operate(operator, a, b) {
 
 function addNumberToDisplay(number) {
   const display = document.querySelector('#display');
-  if (display.textContent === '0' || calculatorState.operand1) {
+  if (display.textContent === '0' || calculatorState.operand1 || display.textContent === 'Not a number') {
     display.textContent = number;
   } else {
     display.textContent += number;
@@ -43,10 +43,18 @@ function operatorClicked(type) {
 }
 
 function displayOperation() {
-  const operater = calculatorState['operator'];
+  const operator = calculatorState['operator'];
   const op1 = calculatorState['operand1'];
   const op2 = parseFloat(document.querySelector('#display').textContent);
-  const result = operate(operater, op1, op2);
+
+  if (operator === 'divide' && op2 === 0) {
+    setDisplay('Not a number');
+    calculatorState.operand1 = null;
+    calculatorState.operator = null;
+    return;
+  }
+
+  const result = operate(operator, op1, op2);
   setDisplay(result);
 }
 
