@@ -29,6 +29,11 @@ function addNumberToDisplay(number) {
     return;
   }
 
+  if (number === '.' && display.textContent === '0') {
+    display.textContent = '0.';
+    return;
+  }
+
   if (display.textContent === '0' ||  calculatorState.lastClick !== 'number') {//  calculatorState.operand1 || display.textContent === 'Not a number') {
     display.textContent = number;
   } else {
