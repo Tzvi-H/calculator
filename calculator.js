@@ -25,6 +25,10 @@ function operate(operator, a, b) {
 
 function addNumberToDisplay(number) {
   const display = document.querySelector('#display');
+  if (display.textContent.length >= 14 || number === '.' && display.textContent.includes('.')) {
+    return;
+  }
+
   if (display.textContent === '0' ||  calculatorState.lastClick !== 'number') {//  calculatorState.operand1 || display.textContent === 'Not a number') {
     display.textContent = number;
   } else {
