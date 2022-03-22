@@ -63,7 +63,7 @@ function displayOperation() {
 
 function setDisplay(value) {
   const display = document.querySelector('#display');
-  display.textContent = value;
+  display.textContent = value.toString().slice(0, 14);
 }
 
 function resetDisplay() {
