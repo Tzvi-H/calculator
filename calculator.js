@@ -1,6 +1,7 @@
 const calculatorState = {
   operand1: null,
   operator: null,
+  lastClick: null
 }
 
 const calulator = {
@@ -24,7 +25,7 @@ function operate(operator, a, b) {
 
 function addNumberToDisplay(number) {
   const display = document.querySelector('#display');
-  if (display.textContent === '0' || calculatorState.operand1 || display.textContent === 'Not a number') {
+  if (display.textContent === '0' ||  calculatorState.lastClick !== 'number') {//  calculatorState.operand1 || display.textContent === 'Not a number') {
     display.textContent = number;
   } else {
     display.textContent += number;
@@ -49,13 +50,13 @@ function displayOperation() {
 
   if (operator === 'divide' && op2 === 0) {
     setDisplay('Not a number');
-    calculatorState.operand1 = null;
-    calculatorState.operator = null;
+    resetState()
     return;
   }
 
   const result = operate(operator, op1, op2);
   setDisplay(result);
+  resetState()
 }
 
 function setDisplay(value) {
@@ -65,6 +66,10 @@ function setDisplay(value) {
 
 function resetDisplay() {
   setDisplay(0);
+  resetState()
+}
+
+function resetState() {
   calculatorState.operand1 = null;
   calculatorState.operator = null;
 }
@@ -74,15 +79,19 @@ function handleCalculatorClick(e) {
   switch (true) {
     case e.target.classList.contains('number'):
       addNumberToDisplay(e.target.textContent);
+      calculatorState.lastClick = 'number';
       break;
     case e.target.classList.contains('operator'):
       operatorClicked(e.target.id);
+      calculatorState.lastClick = 'operator';
       break;
     case e.target.classList.contains('equals'):
       displayOperation();
+      calculatorState.lastClick = 'equals';
       break;
     case e.target.classList.contains('clear'):
       resetDisplay()
+      calculatorState.lastClick = 'clear';
       break;
   }
 }
