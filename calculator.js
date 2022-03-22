@@ -1,7 +1,6 @@
 const calculatorState = {
   operand1: null,
   operator: null,
-  operand1Set: false,
 }
 
 const calulator = {
@@ -25,42 +24,30 @@ function operate(operator, a, b) {
 
 function addNumberToDisplay(number) {
   const display = document.querySelector('#display');
-  if (display.textContent === '0' || calculatorState.operand1Set) {
+  if (display.textContent === '0' || calculatorState.operand1) {
     display.textContent = number;
   } else {
     display.textContent += number;
   }
 }
 
-function operatorClicked(operator) {
-  calculatorState.operand1Set = true;
-
+function operatorClicked(type) {
   const display = document.querySelector('#display');
-  calculatorState.operand1 = parseFloat(display.textContent);
 
-  switch (operator) {
-    case '+':
-      calculatorState.operator = 'add';
-      break;
-    case '−':
-      calculatorState.operator = 'subtract';
-      break;
-    case '×':
-      calculatorState.operator = 'multiply'
-      break;
-    case '÷':
-      calculatorState.operator = 'divide'
-      break ;
+  if (calculatorState.operand1) {
+    displayOperation()
   }
+
+  calculatorState.operand1 = parseFloat(display.textContent);
+  calculatorState.operator = type;
 }
 
 function displayOperation() {
   const operater = calculatorState['operator'];
   const op1 = calculatorState['operand1'];
-  const op2 = parseFloat(document.querySelector('#display').textContent);;
+  const op2 = parseFloat(document.querySelector('#display').textContent);
   const result = operate(operater, op1, op2);
   setDisplay(result);
-  calculatorState.operand1Set = false;
 }
 
 function setDisplay(value) {
@@ -70,20 +57,21 @@ function setDisplay(value) {
 
 function resetDisplay() {
   setDisplay(0);
-  calculatorState.operand1Set = false;
+  calculatorState.operand1 = null;
+  calculatorState.operator = null;
 }
 
 function handleCalculatorClick(e) {
   e.stopPropagation();
   switch (true) {
-    case e.target.classList.contains('equals'):
-      displayOperation();
-      break;
     case e.target.classList.contains('number'):
       addNumberToDisplay(e.target.textContent);
       break;
     case e.target.classList.contains('operator'):
-      operatorClicked(e.target.textContent);
+      operatorClicked(e.target.id);
+      break;
+    case e.target.classList.contains('equals'):
+      displayOperation();
       break;
     case e.target.classList.contains('clear'):
       resetDisplay()

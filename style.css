@@ -9,6 +9,7 @@ table.calculator {
   color: rgb(224, 224, 227);
   width: 300px;
   font-family: Helvetica;
+  font-size: 1.1rem;
 }
 
 td#display {
@@ -46,7 +47,7 @@ td.number {
   background-color: rgb(108 109 105); 
 }
 
-td.operator {
+td.operator, td.equals {
   background-color: rgb(242 158 56);
 }
 
@@ -66,6 +67,6 @@ td.number:active {
   background-color: #bbbab4;
 }
 
-td.operator:active {
+td.operator:active, td.equals:active {
   background-color: #8b5a1d;;
 }
