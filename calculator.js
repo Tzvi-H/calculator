@@ -45,6 +45,8 @@ function operatorClicked(type) {
 
 function displayOperation() {
   const operator = calculatorState['operator'];
+  if (!operator) return;
+  
   const op1 = calculatorState['operand1'];
   const op2 = parseFloat(document.querySelector('#display').textContent);
 
